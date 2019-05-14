@@ -20,7 +20,6 @@ const allButtons = document.querySelectorAll('.btn');
 for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener('click', (e) => {
         e.preventDefault();
-        console.clear();
         alert("You Have Successfully Signed Up")
         console.log("You clicked:", this.innerHTML);
     });
@@ -38,8 +37,6 @@ for (let i = 0; i < allButtons.length; i++) {
  * Keydown event
  */
 window.addEventListener('keydown', (e) => {
-    e.preventDefault();
-    // alert(`You clicked ${e.code}`);
     if (e.code === 'KeyP') {
         location.href = '#P';
     }
@@ -55,8 +52,7 @@ let imageList = [...document.querySelectorAll('img')];
 for (let i = 0; i < imageList.length; i++) {
     imageList[i].addEventListener('drag', e => {
         e.preventDefault();
-        // console.log(imageList[i]);
-        imageList[i].classList.add("vert-move");
+        imageList[i].setAttribute('style', 'display: none');
     })
 }
 
@@ -76,14 +72,12 @@ window.addEventListener('resize', (e) => {
  */
 
 let para = [...document.querySelectorAll('p')];
-// console.log(para);
 
 para.forEach(p => {
     p.addEventListener('copy', (e) => {
         e.preventDefault();
         p.setAttribute('style', 'color: red');  
     })
-    console.log(p);
 })
 
 para.forEach(p => {
@@ -91,6 +85,27 @@ para.forEach(p => {
         e.preventDefault();
         p.setAttribute('style', 'display: none');  
     })
-    console.log(p);
+
 })
 
+/**
+ * scroll event
+ */
+
+ window.addEventListener('scroll', (e) => {
+    e.preventDefault();
+    for (let i = 0; i < imageList.length; i++) {
+        imageList[i].classList.add("vert-move");
+    }
+ })
+
+/**
+ * Double click event
+ */
+
+para.forEach(p => {
+    p.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        p.setAttribute('style', 'color: blue'); 
+    })
+})
