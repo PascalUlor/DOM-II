@@ -29,10 +29,10 @@ for (let i = 0; i < allButtons.length; i++) {
   /**
    * Load Event
    */
-   window.addEventListener('load', e=> {
-       e.preventDefault();
-       alert("Welcome");
-   })
+//    window.addEventListener('load', e=> {
+//        e.preventDefault();
+//        alert("Welcome");
+//    })
 
 /**
  * Keydown event
@@ -47,3 +47,27 @@ window.addEventListener('keydown', (e) => {
         location.href = '#T';
     }
 })
+
+/**
+ * Drag Event
+ */
+let imageList = [...document.querySelectorAll('img')];
+console.log(imageList);
+for (let i =0; i < imageList.length; i++) {
+    imageList[i].addEventListener('drag', e=> {
+        e.preventDefault();
+        // console.log(imageList[i]);
+        imageList[i].classList.add("vert-move");
+    })
+}
+
+/**
+ * Resize
+ */
+
+ window.addEventListener('resize', (e) =>{
+     e.preventDefault();
+     if(window.innerWidth < 800) {
+       const bg = document.querySelector('.home');bg.style.background = 'red';  
+     }
+ })
