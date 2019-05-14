@@ -25,3 +25,11 @@ for (let i = 0; i < allButtons.length; i++) {
       console.log("You clicked:", this.innerHTML);
     });
   }
+
+  /**
+   * Load Event
+   */
+   window.addEventListener('load', e=> {
+       e.preventDefault();
+       alert("Welcome");
+   })
