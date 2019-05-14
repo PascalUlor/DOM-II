@@ -33,3 +33,17 @@ for (let i = 0; i < allButtons.length; i++) {
        e.preventDefault();
        alert("Welcome");
    })
+
+/**
+ * Keydown event
+ */
+window.addEventListener('keydown', (e) => {
+    e.preventDefault();
+    // alert(`You clicked ${e.code}`);
+    if(e.code === 'KeyP'){
+    location.href = '#P';
+    }
+    if (e.code === 'KeyT') {
+        location.href = '#T';
+    }
+})
