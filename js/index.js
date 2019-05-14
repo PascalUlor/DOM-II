@@ -8,8 +8,7 @@ const imageArray = document.images;
 [...imageArray].forEach(image => {
     const item = document.querySelector('.' + image.className);
     item.addEventListener('mouseover', (e) => {
-        e.preventDefault();
-        document.querySelector('.' + image.className).parentNode.classList.add("img-zoom");
+    document.querySelector('.'+image.className).parentNode.classList.add("img-zoom");
     })
 });
 
@@ -19,7 +18,6 @@ const imageArray = document.images;
 const allButtons = document.querySelectorAll('.btn');
 for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener('click', (e) => {
-        e.preventDefault();
         alert("You Have Successfully Signed Up")
         console.log("You clicked:", this.innerHTML);
     });
@@ -29,7 +27,6 @@ for (let i = 0; i < allButtons.length; i++) {
  * Load Event
  */
    window.addEventListener('load', e=> {
-       e.preventDefault();
        alert("Welcome");
    })
 
@@ -48,10 +45,9 @@ window.addEventListener('keydown', (e) => {
 /**
  * Drag Event
  */
-let imageList = [...document.querySelectorAll('img')];
+const imageList = [...document.querySelectorAll('img')];
 for (let i = 0; i < imageList.length; i++) {
     imageList[i].addEventListener('drag', e => {
-        e.preventDefault();
         imageList[i].setAttribute('style', 'display: none');
     })
 }
@@ -61,7 +57,6 @@ for (let i = 0; i < imageList.length; i++) {
  */
 
 window.addEventListener('resize', (e) => {
-    e.preventDefault();
     if (window.innerWidth < 800) {
         const bg = document.querySelector('.home'); bg.style.background = 'red';
     }
@@ -71,18 +66,16 @@ window.addEventListener('resize', (e) => {
  * Copy and Cut event
  */
 
-let para = [...document.querySelectorAll('p')];
+const para = [...document.querySelectorAll('p')];
 
 para.forEach(p => {
     p.addEventListener('copy', (e) => {
-        e.preventDefault();
         p.setAttribute('style', 'color: red');  
     })
 })
 
 para.forEach(p => {
     p.addEventListener('cut', (e) => {
-        e.preventDefault();
         p.setAttribute('style', 'display: none');  
     })
 
@@ -93,9 +86,10 @@ para.forEach(p => {
  */
 
  window.addEventListener('scroll', (e) => {
-    e.preventDefault();
     for (let i = 0; i < imageList.length; i++) {
-        imageList[i].classList.add("vert-move");
+        if (i === 0) {
+            imageList[i].classList.add("vert-move");
+        }  
     }
  })
 
@@ -105,7 +99,6 @@ para.forEach(p => {
 
 para.forEach(p => {
     p.addEventListener('dblclick', (e) => {
-        e.preventDefault();
         p.setAttribute('style', 'color: blue'); 
     })
 })
