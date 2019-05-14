@@ -1,3 +1,20 @@
+/*Image animation*/
+.img-zoom {
+  position: relative;
+  overflow: hidden;
+  &:hover img {
+    cursor: pointer;
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  img {
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+}
+
 .home {
 
   .intro {
