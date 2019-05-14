@@ -3,14 +3,12 @@
 /**
  * Mouseover Anmation
  */
-const imageArray = document.images;
-
-[...imageArray].forEach(image => {
-    const item = document.querySelector('.' + image.className);
-    item.addEventListener('mouseover', (e) => {
-    document.querySelector('.'+image.className).parentNode.classList.add("img-zoom");
+const imageArray = [...document.querySelectorAll('img')];
+for (let i = 0; i < imageArray.length; i++) {
+    imageArray[i].addEventListener('mouseover', (e) => {
+        imageList[i].parentNode.classList.add("img-zoom");
     })
-});
+}
 
 /**
  * Click Event
@@ -36,8 +34,18 @@ for (let i = 0; i < btnContainers.length; i++) {
 /**
  * Load Event
  */
+const navBar = document.querySelector('header')
    window.addEventListener('load', e=> {
-       alert("Welcome");
+       /**
+        * background toggle color gotten from help channel
+        * courtesy of Emily
+        */
+    const red = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+
+    navBar.style.backgroundColor = `rgb(${red},${green},${blue})`;
+    navBar.style.color = 'white';
    })
 
 /**
@@ -94,7 +102,6 @@ para.forEach(p => {
 /**
  * scroll event
  */
-
  window.addEventListener('scroll', (e) => {
     for (let i = 0; i < imageList.length; i++) {
         if (i === 0) {
@@ -112,3 +119,14 @@ para.forEach(p => {
         p.setAttribute('style', 'color: blue'); 
     })
 })
+
+/**
+ * Nav Event
+ */
+
+ const navItems = document.querySelectorAll('a');
+ for (let i = 0; i < navItems.length; i++) {
+     navItems[i].addEventListener('click', e=> {
+         e.preventDefault();
+     })
+ }
