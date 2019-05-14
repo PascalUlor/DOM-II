@@ -12,3 +12,16 @@ const imageArray = document.images;
         document.querySelector('.'+image.className).parentNode.classList.add("img-zoom"); 
     })
 });
+
+/**
+ * Click Event
+ */
+const allButtons = document.querySelectorAll('.btn');
+for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].addEventListener('click', (e) => {
+        e.preventDefault();
+      console.clear();
+      alert("You Have Successfully Signed Up")
+      console.log("You clicked:", this.innerHTML);
+    });
+  }
