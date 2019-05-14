@@ -23,6 +23,16 @@ for (let i = 0; i < allButtons.length; i++) {
     });
 }
 
+const btnContainers = document.querySelectorAll('.destination');
+for (let i = 0; i < btnContainers.length; i++) {
+    btnContainers[i].addEventListener('click', (e) => {
+        alert("Pick a destination")
+        console.log('ABOUT TO SHORT-CIRCUIT BUBBLING');
+        e.stopPropagation();
+        console.log('PASCAL');
+    });
+}
+
 /**
  * Load Event
  */
