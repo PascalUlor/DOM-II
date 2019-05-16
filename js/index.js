@@ -130,3 +130,20 @@ para.forEach(p => {
          e.preventDefault();
      })
  }
+
+ /**
+  * GSAP ANIMATION
+  */
+ CSSPlugin.defaultTransformPerspective = 600;
+// let toggleMenu = $('.menu-toggle');
+let logotitle = $('.logo-heading');
+let logo = $('.logo-heading');
+// let listItems = $('ul#menu li');
+let timeline = new TimelineMax({ paused: true, reversed: true });
+timeline.fromTo([logo, logotitle], 0.6, { top: 300 }, { top: -50, ease: Power2.easeInOut });
+timeline.staggerFromTo(listItems, 1.2, { autoAlpha: 0, rotationX: -90, transformOrigin: '50% 0%' }, { autoAlpha: 1, rotationX: 0, ease: Elastic.easeOut.config(1, 0.3) }, 0.1, 0.3);
+
+// toggleMenu.on('click', function() {
+//   $(this).toggleClass('on');
+//   timeline.reversed() ? timeline.play() : timeline.reverse();
+// });
