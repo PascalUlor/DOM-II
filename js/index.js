@@ -35,6 +35,7 @@ for (let i = 0; i < btnContainers.length; i++) {
  * Load Event
  */
 const navBar = document.querySelector('header')
+TweenMax.from(navBar, 1, {x:100});
    window.addEventListener('load', e=> {
        /**
         * background toggle color gotten from help channel
