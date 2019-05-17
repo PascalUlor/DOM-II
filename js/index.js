@@ -6,7 +6,7 @@
 const imageArray = [...document.querySelectorAll('img')];
 for (let i = 0; i < imageArray.length; i++) {
     imageArray[i].addEventListener('mouseover', (e) => {
-        imageList[i].parentNode.classList.add("img-zoom");
+        imageArray[i].parentNode.classList.add("img-zoom");
     })
 }
 
@@ -64,11 +64,11 @@ window.addEventListener('keydown', (e) => {
  * Drag Event
  */
 const imageList = [...document.querySelectorAll('img')];
-for (let i = 0; i < imageList.length; i++) {
-    imageList[i].addEventListener('drag', e => {
-        imageList[i].setAttribute('style', 'display: none');
-    })
-}
+// for (let i = 0; i < imageList.length; i++) {
+//     imageList[i].addEventListener('drag', e => {
+//         imageList[i].setAttribute('style', 'display: none');
+//     })
+// }
 
 /**
  * Resize
@@ -131,19 +131,36 @@ para.forEach(p => {
      })
  }
 
- /**
-  * GSAP ANIMATION
-  */
- CSSPlugin.defaultTransformPerspective = 600;
-// let toggleMenu = $('.menu-toggle');
-let logotitle = $('.logo-heading');
-let logo = $('.logo-heading');
-// let listItems = $('ul#menu li');
-let timeline = new TimelineMax({ paused: true, reversed: true });
-timeline.fromTo([logo, logotitle], 0.6, { top: 300 }, { top: -50, ease: Power2.easeInOut });
-timeline.staggerFromTo(listItems, 1.2, { autoAlpha: 0, rotationX: -90, transformOrigin: '50% 0%' }, { autoAlpha: 1, rotationX: 0, ease: Elastic.easeOut.config(1, 0.3) }, 0.1, 0.3);
+ //drag drop
+ const dragDrop=() => {
+    const images = document.querySelectorAll('img');
+  
+    let draggedItem = '';
+    let draggedItemSrc = '';
+  
+    images.forEach((image) => {
+      image.addEventListener('dragstart', (e) => {
+        draggedItem = e.target.className;
+        draggedItemSrc = e.target.src;
+        e.target.style.opacity = 0;
+      });
+  
+      image.addEventListener('dragend', (e) => {
+        draggedItem = '';
+        draggedItemSrc = '';
+        e.target.style.opacity = 1;
+      });
+  
+      image.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+  
+      image.addEventListener('drop', (e) => {
+        const replace = document.querySelector(`.${draggedItem}`);
+        replace.setAttribute('src', e.target.src);
+        e.target.setAttribute('src', draggedItemSrc);
+      });
+    });
+  };
 
-// toggleMenu.on('click', function() {
-//   $(this).toggleClass('on');
-//   timeline.reversed() ? timeline.play() : timeline.reverse();
-// });
+  dragDrop();
